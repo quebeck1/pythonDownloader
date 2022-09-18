@@ -65,7 +65,7 @@ if n == 7:
             # },
             {
                 'key': 'FFmpegMetadata',
-                'add_chapters': True,
+                'add_chapters': False,
                 'add_metadata': True
             },
             {
