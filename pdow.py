@@ -46,27 +46,32 @@ if n == 7:
         'format': '139',
         'format_sort': ['ext'],
         'ignoreerrors': True,
+        'merge_output_format': ['mp3'],
         'writethumbnail': True,
         'abort_on_unavailable_fragments': True,
         'outtmpl': '%(title)s.%(ext)s',
         'postprocessors': [
             {
                 'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'm4a'
+                'preferredcodec': 'mp3'
             },
-            {
-                'key': 'SponsorBlock',
-                'categories': ['sponsor', 'intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic']
-            },
-            {
-                'key': 'ModifyChapters',
-                'remove_sponsor_segments': ['sponsor', 'intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic']
-            }
             # {
-                # 'key': 'MetadataParser',
-                # 'when': 'pre_process',
-                # 'actions': [{MetadataParserPP.Actions.INTERPRET, 'descriptionk'}]
-            # }
+            #     'key': 'SponsorBlock',
+            #     'categories': ['sponsor', 'intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic']
+            # },
+            # {
+            #     'key': 'ModifyChapters',
+            #     'remove_sponsor_segments': ['sponsor', 'intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic']
+            # },
+            {
+                'key': 'FFmpegMetadata',
+                'add_chapters': True,
+                'add_metadata': True
+            },
+            {
+                'key': 'EmbedThumbnail',
+                'already_have_thumbnail': False
+            }
         ]
     }
 else:
